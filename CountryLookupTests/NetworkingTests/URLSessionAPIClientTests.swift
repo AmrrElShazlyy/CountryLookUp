@@ -51,9 +51,9 @@ final class URLSessionAPIClientTests: XCTestCase {
                 }
             }, receiveValue: { (response: [Country]) in
                 // Then
-                XCTAssertEqual(response.first?.name?.common, expectedCountry.name?.common)
-                XCTAssertEqual(response.first?.capital?.first, expectedCountry.capital?.first)
-                XCTAssertEqual(response.first?.currencies?.first?.value.name, expectedCountry.currencies?.first?.value.name)
+                XCTAssertEqual(response.first?.name.common, expectedCountry.name.common)
+                XCTAssertEqual(response.first?.capital.first, expectedCountry.capital.first)
+                XCTAssertEqual(response.first?.currencies.first?.value.name, expectedCountry.currencies.first?.value.name)
                 expectation.fulfill()
 
             })
