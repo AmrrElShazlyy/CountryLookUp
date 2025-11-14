@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 protocol CountryService {
-    func fetchCountry(name: String) -> AnyPublisher<[Country], APIError>
+    func fetchCountries(name: String) -> AnyPublisher<[Country], APIError>
 }
 
 class CountryServiceProvider: CountryService {
     private let apiClient = URLSessionAPIClient<CountryEndpoint>()
     
-    func fetchCountry(name: String) -> AnyPublisher<[Country], APIError> {
+    func fetchCountries(name: String) -> AnyPublisher<[Country], APIError> {
         return apiClient.request(.country(name: name))
     }
 }
