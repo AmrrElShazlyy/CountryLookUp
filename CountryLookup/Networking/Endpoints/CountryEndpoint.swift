@@ -20,7 +20,7 @@ enum CountryEndpoint: APIEndpoint {
     var path: String {
         switch self {
         case .country(let name):
-            return "name/\(name)"
+            return "name/\(name.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? name)"
         }
     }
     

@@ -17,7 +17,7 @@ class MockCountryServiceProvider: CountryService {
         self.apiClient = apiClient
     }
     
-    func fetchCountry(name: String) -> AnyPublisher<[Country], CountryLookup.APIError> {
+    func fetchCountries(name: String) -> AnyPublisher<[Country], CountryLookup.APIError> {
         return apiClient.request(.country(name: name))
     }
 }
