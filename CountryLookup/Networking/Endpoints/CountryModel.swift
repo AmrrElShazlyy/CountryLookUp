@@ -11,15 +11,21 @@ struct Country: Codable {
     let name: CountryName
     let currencies: [String: CountryCurrency]
     let capital: [String]
+    let flag: String
+    let flags: CountryFlags
     
     init(
         name: CountryName,
         currencies: [String : CountryCurrency],
-        capital: [String]
+        capital: [String],
+        flag: String,
+        flags: CountryFlags
     ) {
         self.name = name
         self.currencies = currencies
         self.capital = capital
+        self.flag = flag
+        self.flags = flags
     }
     
     init(from decoder: any Decoder) throws {
@@ -27,6 +33,8 @@ struct Country: Codable {
         self.name = try container.decodeIfPresent(CountryName.self, forKey: .name) ?? CountryName(common: "NA", official: "NA")
         self.currencies = try container.decodeIfPresent([String : CountryCurrency].self, forKey: .currencies) ?? ["NA": CountryCurrency(name: "NA", symbol: "NA")]
         self.capital = try container.decodeIfPresent([String].self, forKey: .capital) ?? ["NA"]
+        self.flag = try container.decodeIfPresent(String.self, forKey: .flag) ?? "🏳️"
+        self.flags = try container.decodeIfPresent(CountryFlags.self, forKey: .flags) ?? CountryFlags(svg: nil)
     }
 }
 
@@ -62,3 +70,19 @@ struct CountryCurrency: Codable {
     }
 }
 
+struct CountryFlags: Codable {
+    let svg: URL?
+    
+    init(svg: URL?) {
+        self.svg = svg
+    }
+
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let svgString = try container.decodeIfPresent(String.self, forKey: .svg) {
+            self.svg = URL(string: svgString)
+        } else {
+            self.svg = nil
+        }
+    }
+}

@@ -30,7 +30,9 @@ final class URLSessionAPIClientTests: XCTestCase {
         let expectedCountry = Country(
             name: CountryName(common: "Egypt", official: "Egypt"),
             currencies: ["EGP": CountryCurrency(name: "Egyptian pound", symbol: "£")],
-            capital: ["Cairo"]
+            capital: ["Cairo"],
+            flag: "flag",
+            flags: CountryFlags(svg: nil)
         )
         let data = try! XCTUnwrap(JSONEncoder().encode([expectedCountry]))
         let expectation = XCTestExpectation(description: "Request done successfully!")
@@ -54,6 +56,7 @@ final class URLSessionAPIClientTests: XCTestCase {
                 XCTAssertEqual(response.first?.name.common, expectedCountry.name.common)
                 XCTAssertEqual(response.first?.capital.first, expectedCountry.capital.first)
                 XCTAssertEqual(response.first?.currencies.first?.value.name, expectedCountry.currencies.first?.value.name)
+                XCTAssertEqual(response.first?.flag, expectedCountry.flag)
                 expectation.fulfill()
 
             })
