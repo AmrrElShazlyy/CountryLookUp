@@ -101,8 +101,7 @@ struct DetailRow: View {
                     symbol: "$"
                 )],
                 capital: ["Cairo"],
-                flag: "🏳️",
-                flags: CountryFlags(svg: nil)
+                flag: "🏳️"
             )
         )
     }
