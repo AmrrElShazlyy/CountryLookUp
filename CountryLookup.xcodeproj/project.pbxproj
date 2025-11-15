@@ -12,6 +12,8 @@
 		8A3CC9782EC7AB1C003ECC8A /* CountryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9762EC7AB1C003ECC8A /* CountryDetailsView.swift */; };
 		8A3CC97E2EC7DCF7003ECC8A /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC97C2EC7DCF7003ECC8A /* ImageExtension.swift */; };
 		8A3CC9822EC8D4B2003ECC8A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9812EC8D4B2003ECC8A /* LocationManager.swift */; };
+		8A3CC9842EC92186003ECC8A /* MockLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9832EC92186003ECC8A /* MockLocationService.swift */; };
+		8A3CC9862EC922A2003ECC8A /* CountrySearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9852EC922A2003ECC8A /* CountrySearchViewModelTests.swift */; };
 		8A8318DB2EC64D8D004B18BC /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8318D92EC64D8D004B18BC /* APIClient.swift */; };
 		8A8318DD2EC64D9C004B18BC /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8318DC2EC64D9C004B18BC /* APIEndpoint.swift */; };
 		8A8318DF2EC64EEC004B18BC /* CountryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8318DE2EC64EEC004B18BC /* CountryEndpoint.swift */; };
@@ -50,6 +52,8 @@
 		8A3CC9762EC7AB1C003ECC8A /* CountryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsView.swift; sourceTree = "<group>"; };
 		8A3CC97C2EC7DCF7003ECC8A /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		8A3CC9812EC8D4B2003ECC8A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		8A3CC9832EC92186003ECC8A /* MockLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationService.swift; sourceTree = "<group>"; };
+		8A3CC9852EC922A2003ECC8A /* CountrySearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySearchViewModelTests.swift; sourceTree = "<group>"; };
 		8A8318D92EC64D8D004B18BC /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8A8318DC2EC64D9C004B18BC /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		8A8318DE2EC64EEC004B18BC /* CountryEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryEndpoint.swift; sourceTree = "<group>"; };
@@ -126,6 +130,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		8A3CC9882EC923C3003ECC8A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8A8318F02EC67465004B18BC /* URLSessionAPIClientTests.swift */,
+				8A3CC9852EC922A2003ECC8A /* CountrySearchViewModelTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		8A8318D12EC64D15004B18BC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,17 +175,9 @@
 				8A8318EA2EC67231004B18BC /* MockURLSession.swift */,
 				8A8318EE2EC673CA004B18BC /* MockAPIClient.swift */,
 				8A8318F22EC68384004B18BC /* MockCountryServiceProvider.swift */,
+				8A3CC9832EC92186003ECC8A /* MockLocationService.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		8A8318E92EC671F2004B18BC /* NetworkingTests */ = {
-			isa = PBXGroup;
-			children = (
-				8A8318E82EC671F2004B18BC /* Mocks */,
-				8A8318F02EC67465004B18BC /* URLSessionAPIClientTests.swift */,
-			);
-			path = NetworkingTests;
 			sourceTree = "<group>";
 		};
 		8AF23C602EC63AA5007BE58E = {
@@ -235,7 +240,8 @@
 		8AF23CAD2EC63C4F007BE58E /* CountryLookupTests */ = {
 			isa = PBXGroup;
 			children = (
-				8A8318E92EC671F2004B18BC /* NetworkingTests */,
+				8A8318E82EC671F2004B18BC /* Mocks */,
+				8A3CC9882EC923C3003ECC8A /* Tests */,
 			);
 			path = CountryLookupTests;
 			sourceTree = "<group>";
@@ -395,6 +401,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3CC9862EC922A2003ECC8A /* CountrySearchViewModelTests.swift in Sources */,
+				8A3CC9842EC92186003ECC8A /* MockLocationService.swift in Sources */,
 				8A8318ED2EC672E4004B18BC /* MockURLProtocol.swift in Sources */,
 				8A8318EF2EC673CA004B18BC /* MockAPIClient.swift in Sources */,
 				8A8318F12EC67465004B18BC /* URLSessionAPIClientTests.swift in Sources */,

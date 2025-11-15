@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import XCTest
 import Combine
 @testable import CountryLookup
@@ -31,8 +30,7 @@ final class URLSessionAPIClientTests: XCTestCase {
             name: CountryName(common: "Egypt", official: "Egypt"),
             currencies: ["EGP": CountryCurrency(name: "Egyptian pound", symbol: "£")],
             capital: ["Cairo"],
-            flag: "flag",
-            flags: CountryFlags(svg: nil)
+            flag: "flag"
         )
         let data = try! XCTUnwrap(JSONEncoder().encode([expectedCountry]))
         let expectation = XCTestExpectation(description: "Request done successfully!")
