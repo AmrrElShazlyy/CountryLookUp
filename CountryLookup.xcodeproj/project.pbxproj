@@ -11,6 +11,7 @@
 		8A3CC9662EC7861C003ECC8A /* CountrySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9652EC7861C003ECC8A /* CountrySearchView.swift */; };
 		8A3CC9782EC7AB1C003ECC8A /* CountryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9762EC7AB1C003ECC8A /* CountryDetailsView.swift */; };
 		8A3CC97E2EC7DCF7003ECC8A /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC97C2EC7DCF7003ECC8A /* ImageExtension.swift */; };
+		8A3CC9822EC8D4B2003ECC8A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3CC9812EC8D4B2003ECC8A /* LocationManager.swift */; };
 		8A8318DB2EC64D8D004B18BC /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8318D92EC64D8D004B18BC /* APIClient.swift */; };
 		8A8318DD2EC64D9C004B18BC /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8318DC2EC64D9C004B18BC /* APIEndpoint.swift */; };
 		8A8318DF2EC64EEC004B18BC /* CountryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8318DE2EC64EEC004B18BC /* CountryEndpoint.swift */; };
@@ -51,6 +52,7 @@
 		8A3CC9652EC7861C003ECC8A /* CountrySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySearchView.swift; sourceTree = "<group>"; };
 		8A3CC9762EC7AB1C003ECC8A /* CountryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsView.swift; sourceTree = "<group>"; };
 		8A3CC97C2EC7DCF7003ECC8A /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		8A3CC9812EC8D4B2003ECC8A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8A8318D92EC64D8D004B18BC /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8A8318DC2EC64D9C004B18BC /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		8A8318DE2EC64EEC004B18BC /* CountryEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryEndpoint.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 				8A3CC97C2EC7DCF7003ECC8A /* ImageExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8A3CC9802EC8D4A8003ECC8A /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				8A3CC9812EC8D4B2003ECC8A /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		8A8318D12EC64D15004B18BC /* Networking */ = {
@@ -222,6 +232,7 @@
 				8AF23CA22EC63C4A007BE58E /* Core */,
 				8AF23CA32EC63C4A007BE58E /* Resources */,
 				8A8318D12EC64D15004B18BC /* Networking */,
+				8A3CC9802EC8D4A8003ECC8A /* Location */,
 				8A3CC97D2EC7DCF7003ECC8A /* Extensions */,
 				8AF23CA52EC63C4A007BE58E /* Scenes */,
 			);
@@ -390,6 +401,7 @@
 				8A8318E32EC64F1F004B18BC /* CountryService.swift in Sources */,
 				8A8318E12EC64F0B004B18BC /* CountryModel.swift in Sources */,
 				8A8318DF2EC64EEC004B18BC /* CountryEndpoint.swift in Sources */,
+				8A3CC9822EC8D4B2003ECC8A /* LocationManager.swift in Sources */,
 				8A8318E52EC652AC004B18BC /* APIError.swift in Sources */,
 				8A8318DB2EC64D8D004B18BC /* APIClient.swift in Sources */,
 				8A8318DD2EC64D9C004B18BC /* APIEndpoint.swift in Sources */,
@@ -562,6 +574,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to automatically add your country to the list.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -594,6 +607,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to automatically add your country to the list.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
