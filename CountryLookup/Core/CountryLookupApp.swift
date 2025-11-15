@@ -11,7 +11,7 @@ import SwiftUI
 struct CountryLookupApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CountrySearchView()
         }
     }
 }
