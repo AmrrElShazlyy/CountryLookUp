@@ -40,6 +40,9 @@ struct CountrySearchView: View {
             } message: {
                 Text(viewModel.alertMessage)
             }
+            .task {
+                await viewModel.autoAddCountryBasedOnLocation()
+            }
         }
     }
     

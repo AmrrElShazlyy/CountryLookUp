@@ -34,15 +34,21 @@ class CountrySearchViewModel: ObservableObject {
     private let networkMonitor = NWPathMonitor()
     private let networkMonitorQueue = DispatchQueue(label: "NetworkMontorQueue")
     private var isNetworkAvailable: Bool = true
+    private let locationService: LocationServiceProtocol
+    private let defaultCountryCode = "EG"
 
-    init(countryService: CountryService) {
+    init(countryService: CountryService,  locationService: LocationServiceProtocol) {
         self.countryService = countryService
+        self.locationService = locationService
         setupNetworkMonitor()
         setupSearchTextObservers()
     }
     
     convenience init() {
-        self.init(countryService: CountryServiceProvider())
+        self.init(
+            countryService: CountryServiceProvider(),
+            locationService: LocationManager()
+        )
     }
     
     deinit {
@@ -130,6 +136,42 @@ class CountrySearchViewModel: ObservableObject {
         addedCountries.remove(atOffsets: offsets)
     }
     
+    func autoAddCountryBasedOnLocation() async {
+        guard addedCountries.isEmpty else { return }
+
+        let countryCode = await locationService.requestLocationAndGetCountryCode()
+        let codeToUse = countryCode ?? defaultCountryCode
+        await fetchAndAddCountryByCode(codeToUse)
+    }
+    
+    private func fetchAndAddCountryByCode(_ code: String) async {
+        guard isNetworkAvailable else {
+            showNetworkAlert()
+            return
+        }
+
+        countryService.fetchCountyByCode(code)
+            .receive(on: DispatchQueue.main)
+            //.print("$$ ")
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    handleFetchCountryByCodeError(error)
+                }
+            } receiveValue: { [weak self] countries in
+                guard let self = self else { return }
+                
+                if let country = countries.first {
+                    self.addedCountries.append(country)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     private func showMaxLimitAlert() {
         alertTitle = "Maximum Limit Reached"
         alertMessage = "You can only add up to \(maxCountriesLimit) countries. Please remove a country to add a new one."
@@ -166,4 +208,11 @@ class CountrySearchViewModel: ObservableObject {
         }
     }
 
+    private func handleFetchCountryByCodeError(_ error: APIError) {
+        guard isNetworkAvailable else {
+            showNetworkAlert()
+            return
+        }
+        print("⚠️ Auto-add failed with error: \(error)")
+    }
 }
