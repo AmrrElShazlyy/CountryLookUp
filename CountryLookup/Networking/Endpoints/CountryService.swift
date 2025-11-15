@@ -10,6 +10,7 @@ import Combine
 
 protocol CountryService {
     func fetchCountries(name: String) -> AnyPublisher<[Country], APIError>
+    func fetchCountyByCode(_ code: String) -> AnyPublisher<[Country], APIError>
 }
 
 class CountryServiceProvider: CountryService {
@@ -17,5 +18,9 @@ class CountryServiceProvider: CountryService {
     
     func fetchCountries(name: String) -> AnyPublisher<[Country], APIError> {
         return apiClient.request(.country(name: name))
+    }
+
+    func fetchCountyByCode(_ code: String) -> AnyPublisher<[Country], APIError> {
+        return apiClient.request(.countryCode(code: code))
     }
 }
