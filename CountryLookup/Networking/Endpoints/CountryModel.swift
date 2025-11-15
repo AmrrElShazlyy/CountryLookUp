@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Country: Codable {
+struct Country: Codable, Hashable {
     let name: CountryName
     let currencies: [String: CountryCurrency]
     let capital: [String]
@@ -36,9 +36,17 @@ struct Country: Codable {
         self.flag = try container.decodeIfPresent(String.self, forKey: .flag) ?? "🏳️"
         self.flags = try container.decodeIfPresent(CountryFlags.self, forKey: .flags) ?? CountryFlags(svg: nil)
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name.common)
+    }
+    
+    static func == (lhs: Country, rhs: Country) -> Bool {
+        lhs.name.common == rhs.name.common
+    }
 }
 
-struct CountryName: Codable {
+struct CountryName: Codable, Hashable {
     let common: String
     let official: String
     
@@ -54,7 +62,7 @@ struct CountryName: Codable {
     }
 }
 
-struct CountryCurrency: Codable {
+struct CountryCurrency: Codable, Hashable {
     let name: String
     let symbol: String
     
@@ -70,7 +78,7 @@ struct CountryCurrency: Codable {
     }
 }
 
-struct CountryFlags: Codable {
+struct CountryFlags: Codable, Hashable {
     let svg: URL?
     
     init(svg: URL?) {
